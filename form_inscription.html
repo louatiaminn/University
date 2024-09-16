@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Inscription Formulaire</title>
+    
+  </head>
+    <style>
+      body {
+        background-color: #151515;
+      }
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"], input[type="email"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: none;
+        border-radius: 3px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+      }
+      input[type="submit"] {
+        background-color: #c7ba06;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #c7ba06;
+      }
+    </style>
+
+<body>
+     <form method="post" action="ajouter_etudiant.php"  enctype="multipart/form-data" >
+      <p>Cet espace est dédié aux étudiants de l'ISI </p>
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" required>
+        <label for="prenom">Prenom:</label>
+        <input type="text" id="prenom" name="prenom" required>
+        <label for="cin">CIN :</label>
+        <input type="text" id="cin" name="cin">
+        <label for="mail">Email:</label>
+        <input type="email" id="mail" name="mail" required>
+        <label for="mot_de_passe">Mot de Passe:</label>
+        <input type="password" id="password" name="password" required>
+        <label for="photo">Select a photo:</label>
+        <input type="file" id="photo" name="photo"  accept="image/*">
+        <br>
+        <br>
+        <input type="submit" name="submit" onclick="return test()" value="S'inscrire">
+    </form>
+    <script>
+      function test() {
+     var login = document.getElementById("mail").value;
+     var pwd = document.getElementById("password").value;
+     var a = "@";
+     
+     if (login.length === 0 || pwd.length === 0) {
+       alert("Vérifier votre login et votre mot de passe");
+       return false;
+     } else {
+       if (pwd.length !== 8) {
+         alert("Votre mot de passe doit avoir une longueur égale à 8 caractères");
+         return false;
+       }
+       if (login.substring(login.indexOf(a)) !== '@isikef.u-jendouba.tn') {
+         alert("Votre adresse mail doit contenir @isikef.u-jendouba.tn");
+         return false;
+       }
+     }
+    }
+    </script>
+    </body>
+</html>

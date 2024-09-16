@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Se connecter</title>
+    <meta charset="utf-8">
+  <style>
+    body {
+        background-image: url('assets/img/images/j.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-color: rgb(90, 90, 109);
+    }
+    
+    #form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        background-color: transparent;
+    }
+    
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        padding: 2em;
+        border-radius: 2em;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        width: 50%;
+        max-width: 500px;
+    }
+    
+    label {
+        color: white;
+        font-size: 1.2em;
+        margin-bottom: 0.5em;
+    }
+    input[type="mail"], input[type="email"] {
+        background-color: #eee;
+        border: none;
+        padding: 0.5em 1em;
+        border-radius: 2em;
+        margin-bottom: 1em;
+        width: 100%;
+    }
+
+    input[type="text"], input[type="password"] {
+        background-color: #eee;
+        border: none;
+        padding: 0.5em 1em;
+        border-radius: 2em;
+        margin-bottom: 1em;
+        width: 100%;
+    }
+    
+    input[type="submit"] {
+        background-color: #06072b;
+        color: white;
+        padding: 1em 2em;
+        border: none;
+        border-radius: 2em;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    input[type="submit"]:hover {
+        opacity: 0.8;
+        transform: translateY(-3px);
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    input[type="submit"]:focus {
+        outline: none;
+    }
+    
+    input[type="reset"] {
+        background-color: #06072b;
+        color: white;
+        padding: 1em 2em;
+        border: none;
+        border-radius: 2em;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    input[type="reset"]:hover {
+        opacity: 0.8;
+        transform: translateY(-3px);
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    input[type="reset"]:focus {
+        outline: none;
+    }
+    
+    a, a:visited, a:hover, a:active {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+
+  </head>
+  <body>
+    <h1>Se connecter</h1>
+    <div id="form-container">
+    <form action="authentification2.php" method="post" onsubmit="return test();">
+      <label for="mail">Email:</label>
+      <input type="email" id="mail" name="mail" required>
+      <label for="password">Mot de Passe:</label>
+      <input type="password" id="password" name="password" required>
+      <input type="submit" value="Se connecter">
+      <input type="reset" value="annuler">
+      <a href="#" id="oublie">Mot de passe oublié ?</a>
+    </form>
+    <div id="A" style="display: none;">
+      <h2>Mot de passe oublié ?</h2>
+      <p>Entrez votre adresse e-mail pour réinitialiser votre mot de passe :</p>
+      <input type="email" id="reset-email" name="reset-email" required>
+      <button id="reset">Réinitialiser</button>
+      <button id="annuler">Annuler</button>
+    </div>
+    <script>
+      document.getElementById('oublie').addEventListener('click', function(event) {
+        event.preventDefault();
+        var A = document.getElementById('A');
+        A.style.display = 'block';
+      });
+    
+      document.getElementById('annuler').addEventListener('click', function(event) {
+        event.preventDefault();
+        var A = document.getElementById('A');
+        A.style.display = 'none';
+      });
+    
+      document.getElementById('reset').addEventListener('click', function(event) {
+  event.preventDefault();
+  var email = document.getElementById('email').value;
+  if (email.trim() === "") {
+    alert('Please enter a valid email');
+  } else {
+    alert('An email to reset your password has been sent to ' + email);
+    var A = document.getElementById('A');
+    A.style.display = 'none';
+  }
+});
+
+    </script>
+    
+    
+<script>
+   function test() {
+  var login = document.getElementById("mail").value;
+  var pwd = document.getElementById("password").value;
+  var a = "@";
+  
+  if (login.length === 0 || pwd.length === 0) {
+    alert("Vérifier votre login et votre mot de passe");
+    return false;
+  } else {
+    if (pwd.length !== 8) {
+      alert("Votre mot de passe doit avoir une longueur égale à 8 caractères");
+      return false;
+    }
+    if (login.substring(login.indexOf(a)) !== '@isikef.u-jendouba.tn') {
+      alert("Votre adresse mail doit contenir @isikef.u-jendouba.tn");
+      return false;
+    }
+  }
+}
+
+</script>
+
+</body>
+</html>
